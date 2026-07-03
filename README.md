@@ -153,8 +153,6 @@ Final test-set performance after hyperparameter tuning, best to worst — **base
 
 Random Forest and XGBoost are the two strongest performers, explaining ~71-74% of price variance on unseen listings. Ridge — a plain linear baseline — is a reasonable third, confirming the relationship between features and price is partly linear but benefits from the non-linear models' ability to capture interactions.
 
-*(`log_target=True` is now the default — rerun `train.py`/`predict.py` and drop the updated table here once available.)*
-
 ## Overfitting
 
 Checked by comparing each model's R² on the training set vs. the held-out test set — a large gap (high train R², much lower test R²) signals the model memorized noise rather than learning general patterns. **Baseline run, raw price** (`log_target=False`):
