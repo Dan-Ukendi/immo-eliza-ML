@@ -6,13 +6,13 @@ Two-phase structure:
   2. PreprocessData -> imputing, encoding, rescaling (currently: encoding only)
 
 Usage (see __main__ at the bottom):
-    cleaner = DataCleaning("properties_final.csv")
+    cleaner = DataCleaning("data/properties_final.csv")
     cleaner.load().clean_column_names().clean_data(...)
     df_clean = cleaner.get_data()
 
     pre = PreprocessData(df_clean)
     pre.preprocess_data(...)
-    pre.save("cleaned_for_ML.csv")
+    pre.save("data/Dataframe_Clean_encoded.csv")
 """
 
 import pandas as pd
@@ -391,7 +391,7 @@ if __name__ == "__main__":
         "state_of_the_building": {
             "new": "state_encoded",
             "order": {"To renovate": 0, "Normal": 1, "Fully renovated": 2,
-                      "Excellent": 3, "New": 4},
+                      "New": 3, "Excellent": 4},
         },
         "epc_score": {
             "new": "epc_encoded",
@@ -411,7 +411,7 @@ if __name__ == "__main__":
                    "has_terrace", "furnished", "has_elevator"]
 
     # ---- PHASE 1: CLEAN ----
-    cleaner = DataCleaning("properties_final.csv")
+    cleaner = DataCleaning("data/properties_final.csv")
     cleaner.load().clean_column_names()
     cleaner.clean_data(
         zero_area_pairs=ZERO_AREA_PAIRS,
@@ -432,4 +432,4 @@ if __name__ == "__main__":
         onehot_drop_first=False,
     )
     pre.overview()
-    pre.save("Dataframe_Clean+encoded.csv")
+    pre.save("data/Dataframe_Clean_encoded.csv")
